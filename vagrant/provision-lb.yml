@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become: yes
   gather_facts: true
   tasks:
   - name: add hostname.local entry for loopback
