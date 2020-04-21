@@ -2,8 +2,10 @@
 
 This repository holds the supporting material for the [Certified Kubernetes Administrators Course](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests). There are two major sections. 
 
-- [Kubernetes The Hard Way on VirtualBox](#kubernetes-the-hard-way-on-virtualbox)
-- [Answers to Practice Tests hosted on KodeKloud](/practice-questions-answers)
+- [Kubernetes The Hard Way On VirtualBox](#kubernetes-the-hard-way-on-virtualbox)
+  - [Target Audience](#target-audience)
+  - [Cluster Details](#cluster-details)
+  - [Labs](#labs)
 
 
 # Kubernetes The Hard Way On VirtualBox
@@ -55,3 +57,4 @@ Kubernetes The Hard Way guides you through bootstrapping a highly available Kube
 * [Smoke Test](docs/15-smoke-test.md)
 * [E2E Test](docs/16-e2e-tests.md)
 * [Extra - Dynamic Kubelet Configuration](docs/17-extra-dynamic-kubelet-configuration.md)
+* [kubeadm](docs/18-kubeadm.md)

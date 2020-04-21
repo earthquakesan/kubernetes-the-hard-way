@@ -36,3 +36,15 @@
       name: resolvconf
       state: restarted
       enabled: yes
+  - name: install haproxy
+    apt:
+      name: haproxy
+  - name: copy haproxy config to remote
+    copy:
+      src: "haproxy.cfg"
+      dest: "/etc/haproxy/haproxy.cfg"
+  - name: restart haproxy
+    service:
+      name: haproxy
+      state: restarted
+      enabled: yes
