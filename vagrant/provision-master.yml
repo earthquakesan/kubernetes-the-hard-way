@@ -44,3 +44,35 @@
     copy:
       src: "~/.vagrant.d/insecure_private_key"
       dest: "/home/vagrant/.ssh/id_rsa"
+  - name: Add the br_netfilter module
+    modprobe:
+      name: br_netfilter
+      state: present
+  - name: copy k8s.conf to /etc/sysctl.d/k8s.conf
+    copy:
+      src: "k8s.conf"
+      dest: "/etc/sysctl.d/k8s.conf"
+  - name: reload sysctl
+    command: sysctl --system
+  - name: install apt-transport-https and curl
+    apt:
+      name:
+        - apt-transport-https
+        - curl
+  - name: Add an apt key for apt.kubernetes.io (debian)
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+  - name: add docker apt.kubernetes.io to apt (debian)
+    apt_repository:
+      repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+      state: present
+  - name: install kubelet kubeadm and kubectl
+    apt:
+      name:
+        - kubelet
+        - kubeadm
+        - kubectl
+      update_cache: yes
+  - name: pin the kubelet kubeadm and kubectl versions
+    command: apt-mark hold kubelet kubeadm kubectl
