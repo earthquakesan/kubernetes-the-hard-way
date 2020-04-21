@@ -36,3 +36,11 @@
       name: resolvconf
       state: restarted
       enabled: yes
+  - name: create .ssh directory for vagrant user
+    file:
+      state: directory
+      path: "/home/vagrant/.ssh"
+  - name: copy vagrant ssh private key to master for access to all nodes
+    copy:
+      src: "~/.vagrant.d/insecure_private_key"
+      dest: "/home/vagrant/.ssh/id_rsa"
