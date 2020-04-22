@@ -95,3 +95,6 @@
   command: apt-mark hold kubelet kubeadm kubectl
 - name: disable swap
   command: swapoff -a
+# TODO: ip route add 10.96.0.0/16 dev eth1
+# https://github.com/weaveworks/weave/issues/3420
+# https://github.com/kubernetes/kubeadm/issues/102#issuecomment-291532883
