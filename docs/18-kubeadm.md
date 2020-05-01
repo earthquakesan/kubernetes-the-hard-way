@@ -1,6 +1,5 @@
 # Deploying k8s cluster using kubeadm
 
-
 ```
 ssh-add ~/.vagrant.d/insecure_private_key
 ssh master-1
@@ -53,6 +52,7 @@ gcloud auth
 
 kubetest --extract=v1.18.2
 cd kubernetes
+
 scp master-1:/home/vagrant/.kube/config ./
 # has to be absolute path to the config file
 export KUBECONFIG=$(pwd)/config
@@ -62,3 +62,7 @@ export KUBERNETES_PROVIDER=skeleton
 export KUBE_MASTER_URL=https://192.168.5.30:6443
 kubetest --test --test_args="--ginkgo.focus=\[Conformance\]" > test.out
 ```
+
+## Notes
+
+The cluster setup does not tolerate restart (sic!)
