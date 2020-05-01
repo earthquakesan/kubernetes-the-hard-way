@@ -45,6 +45,20 @@ kubectl -n kube-system get po -w
 # On your local machine run tests on the cluster
 
 go get -u k8s.io/test-infra/kubetest
+go get github.com/onsi/ginkgo/ginkgo
+go get github.com/onsi/gomega/...
 
-v1.18.2
+-- Install google SDK from here: https://cloud.google.com/sdk/docs/downloads-versioned-archives
+gcloud auth
+
+kubetest --extract=v1.18.2
+cd kubernetes
+scp master-1:/home/vagrant/.kube/config ./
+# has to be absolute path to the config file
+export KUBECONFIG=$(pwd)/config
+export KUBE_MASTER_IP=192.168.5.30:6443
+export KUBE_MASTER=master-1
+export KUBERNETES_PROVIDER=skeleton
+export KUBE_MASTER_URL=https://192.168.5.30:6443
+kubetest --test --test_args="--ginkgo.focus=\[Conformance\]" > test.out
 ```
