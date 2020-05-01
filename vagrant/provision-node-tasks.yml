@@ -99,3 +99,4 @@
 # https://github.com/kubernetes/kubeadm/issues/102#issuecomment-291532883
 - name: add route to 10.96.0.0/16
   command: ip route add 10.96.0.0/16 dev eth1
+  ignore_errors: yes
